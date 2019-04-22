@@ -155,6 +155,8 @@ Spring版本升级到4.2.9
 
 增加@RateLimit支持RESTful API访问限速
 
+增加SQL敏感词定义，默认不允许drop,truncate
+
 ### Bug修复
 
 修复无租户服务可以调用租户服务的BUG
@@ -164,6 +166,8 @@ Spring版本升级到4.2.9
 修复了@SQLInjection检测到侵入后SQLInjectionPolicy.BREAK策略时sql依然继续执行的问题
 
 修复跟踪服务cs-cr时binaryAnnotations的sa不是目标服务名、ip、端口的BUG
+
+修复发现服务EurekaInstanceRenewedEvent中InstanceInfo属性为空的BUG
 
 ### 改进
 
@@ -187,15 +191,39 @@ Spring版本升级到4.2.9
 
 跟踪服务Span存储到ES的时候在JSON根节点增加succeed，exception_class，optimize_warn_type，lc，serviceInstId属性
 
+支持了server.tomcat.accept-count参数
 
+数据库版本管理支持动态数据源
+
+集成sharding-jdbc支持客户端数据库分片组件
+
+基于数据库的分布式锁支持通过参数 `iplatform.scheduled.lock.jdbc.tablename` 自定义表名，默认表名为 `IPLATFORM_LOCK`
+
+
+
+## iplatform-boot 1.1.0
+
+### 新功能
+
+集成hazelcast的嵌入分布式缓存
+
+支持为 @FeginClient 方法单独配置超时[参数](Timeout.md)
+
+支持自定义 @RateLimit 实现
+
+微服务管控：增加服务数据库版本配置上报功能
+
+### BUG修复
+
+mongo自动装配增加 `spring.data.mongodb.uri` 判断
+
+### 改进
+
+重构模块，增加单独的依赖管理模块
 
 # Roadmap
 
-JDBC客户端分片
-
 分布式UUID生成器
-
-增加SQL敏感词定义，默认不允许drop table
 
 调用链跟踪-ActiveMQ、Redis、Kafka
 

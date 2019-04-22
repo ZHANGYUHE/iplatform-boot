@@ -13,11 +13,11 @@
 
 ## 2. 介质
 
-| 文件名                          | 说明                        |
-| ------------------------------- | --------------------------- |
-| discovery-haproxy-1.0.0.100.jar | 主程序文件                  |
-| run.sh                          | 启停脚本                    |
-| reloadhaproxy.sh                | 重新加载HAProxy配置文件脚本 |
+| 文件名                          | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| discovery-haproxy-1.0.0.100.jar | 主程序文件                                                   |
+| run.sh                          | 启停脚本                                                     |
+| reloadhaproxy.sh                | 重新加载HAProxy配置文件脚本，注意这个脚本中的HAProxy的命令路径是否和本机的HAProxy路径一致 |
 
 ## 3. 启停
 
@@ -48,7 +48,7 @@ sh run.sh restart
 | discovery.server.address         | 是   |        | 定义注册服务的地址，当集群模式时配置多个地址逗号分隔  discovery.server.address=https://192.168.0.1:8761/eureka/,https://192.168.0.2:8761/eureka/ |
 | server.host                      | 是   |        | 服务绑定IP                                                   |
 | server.port                      |      | 8764   | 服务绑定端口                                                 |
-| spring.cloud.config.enable       | 是   | true   | 开启集中配置功能                                             |
+| spring.cloud.config.enabled      | 是   | true   | 开启集中配置功能                                             |
 | spring.cloud.config.profile      | 是   |        | 集中配置环境名，例如：生产环境                               |
 | haproxy.file                     | 是   |        | haproxy.cfg 的文件全路径                                     |
 | haproxy.reload                   | 是   |        | reloadhaproxy.sh 文件全路径                                  |
@@ -107,6 +107,36 @@ URL地址重写
 * 通过111.204.25.100地址打开auth页面中admin的地址变为 http://111.204.25.100/admin
 * 通过192.168.1.100地址打开auth页面中admin的地址变为 http://192.168.1.100/admin
 * 通过172.16.0.1地址打开auth页面中admin的地址变为 http://172.16.0.2:8763/admin
+
+> 通过代理访问页面时，可以使用Thymeleaf的ProxyURL.resolverAddress标签实现IP:PORT地址重写为代理地址
+
+用法同上，就是参数不同，这个方法接收IP和端口两个参数
+
+例如(IPV4)：
+
+```html
+<span th:text="${#ProxyURL.resolverURL('172.16.0.101','8080')}">
+```
+
+返回 
+
+```html
+<span>111.204.25.100:8080</span>
+```
+
+例如(IPV6)：
+
+```html
+<span th:text="${#ProxyURL.resolverURL('FEDC:BA98:7654:3210:FEDC:BA98:7654:3210','8080')}">
+```
+
+返回 
+
+```html
+<span>[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]:8080</span>
+```
+
+
 
 ## 8. Docker
 

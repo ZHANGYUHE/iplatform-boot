@@ -1,8 +1,14 @@
-# IPLATFORM-BOOT
+# REIPLATFORM-BOOT
 
 >  作者 张磊 2018-9-30
 
-IPLATFORM-BOOT 是以 SpringCloud 为核心的微服务开发框架，提供了基础的公共服务，手册中相关技术使用可以参考[样例代码](https://github.com/coolbeevip/iplatform-boot-example)
+IPLATFORM-BOOT 是以 SpringCloud 为核心的微服务开发框架，提供了基础的公共服务。
+
+手册中相关技术使用可以参考 [样例代码](https://github.com/coolbeevip/iplatform-boot-example)
+
+
+
+![images/Architecture.png](images/Architecture.png)
 
 ## 1. 公共服务部署手册
 
@@ -13,6 +19,7 @@ IPLATFORM-BOOT 是以 SpringCloud 为核心的微服务开发框架，提供了�
 * [监控服务部署手册](iplatform-common/AdminService.md)
 * [通知服务部署手册](iplatform-common/NotifyService.md)
 * [访问代理服务部署手册](iplatform-common/DiscoveryHAProxy.md)
+* [分布式事务中间件手册](iplatform-common/ServiceCombAlpha.md)
 
 ## 2. 开发手册
 
@@ -50,18 +57,21 @@ IPLATFORM-BOOT 是以 SpringCloud 为核心的微服务开发框架，提供了�
   * [集中日志开发手册](/developer/logger/README.md)
   * [集中配置开发手册](/developer/config/README.md)
   * [分布式锁开发手册](developer/distributedlock/README.md)
-  * [集中式缓存开发手册](developer/distributedcache/README.md)
+  * [集中式缓存开发手册](developer/centralizedcache/README.md)
+  * [分布式缓存开发手册](developer/distributedcache/README.md)
   * [服务跟踪配置手册](developer/trace/README.md)
   * [负载均衡配置手册](developer/loadbalance/README.md)
   * [消息总线集成手册](developer/messagebus/README.md)
   * [多租户配置手册](developer/multitenant/README.md)
   * [通知服务集成手册](developer/notify/README.md)
   * [断路器集成手册](developer/hystrix/README.md)
+  * [分布式事务集成手册](developer/distributedtransactions/README.md)
 * 其他
 
   * [日志标准化](Logs.md)
   * [安全开发手册](Security.md)
   * [Docker](Dockerfile.md)
+  * [关于超时配置](Timeout.md)
   * 自动化测试
 
 ## 3. 中间件部署手册
@@ -79,14 +89,19 @@ IPLATFORM-BOOT 是以 SpringCloud 为核心的微服务开发框架，提供了�
 
 - [微服务管控平台部署手册](product/triden/README.md)
 - [微服务管控平台集成](product/triden/API.md)
+- [自动化引擎集成手册](product/automatic/README.md)
 
-## 5. 附件
+## 5. 其他
 
+* [风格指南](StyleGuide.md)
 * [框架参数说明](Properties.md)
+* [基准测试](Benchmark.md)
 * [IPv6 Support](IPv6.md)
 * [版本跟踪](ChangeLog.md)
 * [Spring Boot 1.3.5 Reference Guid](https://docs.spring.io/spring-boot/docs/1.3.5.RELEASE/reference/html/)
 
 ## 6.贡献者
 
-文档：[coderwls](https://github.com/coderwls) [duzhen](https://github.com/duzhen020623) [Yu Shengqiang](https://github.com/ShefronYudy) [yubowinner](https://github.com/yubowinner)
+详情可浏览[提交指南](contributing/README.md)
+
+文档：[coderwls](https://github.com/coderwls) [duzhen](https://github.com/duzhen020623) [Yu Shengqiang](https://github.com/ShefronYudy) [yubowinner](https://github.com/yubowinner) [liuxinan](https://github.com/liuxinan)
